@@ -3,7 +3,7 @@
       @dragenter="hasDragged(true)"  @dragleave="hasDragged(false)"
       @dragover.prevent="hasDragged(true)" @drop.prevent="drop($event.dataTransfer.files)">
 
-    <div :class="['dropzone_area', {'is-hover': isDragging} ]">
+    <div :class="['dropzone_area', cls]">
       <input type="file" name="upload" id="upload" multiple  @change="drop($event.target.files)"/>
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="dropIcon" x="0px" y="0px" width="66.5px" height="71px" viewBox="18 0 66.5 71" enable-background="new 18 0 66.5 71" xml:space="preserve" class="ng-scope">
@@ -18,20 +18,29 @@
 </template>
 
 <script>
+  import { mapActions, mapGetters } from 'vuex'
+  
+  import { DRAG_ENTER, DRAG_LEAVE, HANDLE_FILES} from '../store/types'
+  import store from '../store/'
 
 
   export default {
-    data: _ => ({
-      isDragging : false,
-      files : [],
-    }),
+    name : 'dropzone',
+    computed: {
+      ...mapGetters(['isDragging']),
+      cls () { return {'is-hover': this.isDragging} },
+      
+      isVisible () {
+        return this.isDragging || this.$route.name === 'drop'
+      }
+    },
     methods: {
       drop: function(files) {
-        this.files = Array.from(files)
-        this.isDragging = false
+        store.dispatch(HANDLE_FILES, files)
+        store.commit(DRAG_LEAVE)
       },
       hasDragged : function (bool){
-        this.isDragging = bool
+        store.commit(bool ? DRAG_ENTER : DRAG_LEAVE )
       }
     }
   }
