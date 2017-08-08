@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import Dropzone from './pages/dropzone/Dropzone.vue'
+  import Dropzone from './pages/Dropzone.vue'
   
   export default {
     name: 'app',
