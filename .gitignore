@@ -15,4 +15,4 @@ package-lock.json
 
 
 #Config file
-config/index.js
+src/config/index.js
