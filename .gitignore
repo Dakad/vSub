@@ -1,0 +1,19 @@
+.DS_Store
+node_modules
+dist/
+yarn-error.log
+npm-debug.log
+package-lock.json
+
+# Editor directories and files
+.c9/
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+
+#Config file
+config/prod.*
+config/production.*
