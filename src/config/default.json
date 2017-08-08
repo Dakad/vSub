@@ -3,9 +3,9 @@
         "apiKey" : "http://backend.example.com/api/v1"
     },
     "openSubtitle" : {
-        "useragent": "UserAgent",
-        "username": "Username",
-        "password": "Password",
+        "useragent": "OSTestUserAgentTemp",
+        "username": "nalubu",
+        "password": "nalubu123",
         "ssl": true
     }
 }
