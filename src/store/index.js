@@ -6,6 +6,7 @@ import * as getters from './getters';
 import * as types from './types';
 
 import dragdrop from './modules/dragdrop';
+import dropped from './modules/dropped';
 
 
 Vue.use(Vuex);
@@ -35,6 +36,7 @@ export default new Vuex.Store({
   mutations,
   modules: {
       dragdrop,
+      dropped,
 
   }
 });

@@ -20,10 +20,9 @@
 <script>
   import { mapActions, mapGetters } from 'vuex'
   
-  import { DRAG_ENTER, DRAG_LEAVE} from '../store/types'
+  import { DRAG_ENTER, DRAG_LEAVE, HANDLE_FILES} from '../store/types'
   import store from '../store/'
 
-  console.log(mapGetters(['isDragging', 'hasSubtitles']));
 
   export default {
     name : 'dropzone',
@@ -37,7 +36,7 @@
     },
     methods: {
       drop: function(files) {
-        // this.files = Array.from(files)
+        store.dispatch(HANDLE_FILES, files)
         store.commit(DRAG_LEAVE)
       },
       hasDragged : function (bool){
