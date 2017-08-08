@@ -1,5 +1,28 @@
-import * as types from './types';
 
+
+// -------------------------------------------------------------------
+// Dependencies
+
+// Import
+
+// Built-in
+
+// Mine
+import * as types from './types';
+import Config from '../config'
+import OpenSubtitleService from '../services/open-subtitle'
+
+
+// -------------------------------------------------------------------
+// Properties
+
+// Init the service with the config
+const OpenSubService = new OpenSubtitleService(Config.openSubtitle)
+
+
+
+// -------------------------------------------------------------------
+// Exports
 
 
 /**
@@ -26,7 +49,7 @@ export const handleFiles = function ({ commit, dispatch }, files){
 
 
 /**
- * Process the first element in the subtitle Q
+ * Process the first element in the dropped Q
  */
 export const processQ = ({ commit, dispatch, getters, state }) => {
   commit(types.SHIFT_DROPPED_Q) // Shift file from dropped queue & set it as current
@@ -36,7 +59,31 @@ export const processQ = ({ commit, dispatch, getters, state }) => {
     return null; // Send ERROR instead of null
   }
   
-  console.log('Handling dropped files .... ', dropped);
+  OpenSubService.hash(dropped)
+    .then(({moviehash}) => OpenSubService.getDetails([moviehash]))
+    .then(({data}) => {
+      Object.keys(data).forEach(hash => dispatch('addSummary', data[hash]))
+      
+      // ? Remain some dropped files ?
+      if(state.dropped.droppedQueue.length > 0){
+        dispatch('processQ') // Re-exec the process
+      }
+    })
+
+}
 
 
+
+export const addSummary = ({ commit }, summary) => {
+      console.log(summary)
+  commit(types.ADD_SUMMARY, {
+    hash : summary.MovieHash,
+    IMBDId : summary.MovieImdbID,
+    name: summary.MovieName,
+    kind : summary.MovieKind,
+    season: summary.SeriesSeason,
+    episode: summary.SeriesEpisode,
+    year: summary.MovieYear,
+    subCount : summary.SubCount
+  })
 }

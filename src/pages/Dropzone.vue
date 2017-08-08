@@ -1,5 +1,5 @@
 <template>
-  <form enctype='multipart/form-data' class="dropzone"
+  <form enctype='multipart/form-data' class="dropzone" v-show="isVisible"
       @dragenter="hasDragged(true)"  @dragleave="hasDragged(false)"
       @dragover.prevent="hasDragged(true)" @drop.prevent="drop($event.dataTransfer.files)">
 
@@ -28,6 +28,7 @@
     name : 'dropzone',
     computed: {
       ...mapGetters(['isDragging']),
+
       cls () { return {'is-hover': this.isDragging} },
       
       isVisible () {
