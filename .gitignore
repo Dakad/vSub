@@ -15,5 +15,4 @@ package-lock.json
 
 
 #Config file
-config/prod.*
-config/production.*
+config/index.js
