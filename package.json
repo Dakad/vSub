@@ -22,7 +22,9 @@
     ]
   },
   "dependencies": {
-    "config": "^1.26.1",
+    "bluebird": "^3.5.0",
+    "lodash.merge": "^4.6.0",
+    "opensubtitles-api": "^4.0.0",
     "vue": "^2.4.0",
     "vue-router": "^2.7.0",
     "vue2-filters": "^0.1.9",
