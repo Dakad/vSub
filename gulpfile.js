@@ -12,6 +12,6 @@ gulp.task('default', function () {
 gulp.task('watch', function () {
   gulp.watch('./styles/sass/**/*.scss', ['default']);
   return gulp.src('./styles/sass/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({outputStyle : 'compressed'}).on('error', sass.logError))
     .pipe(gulp.dest('./dist'));
 });

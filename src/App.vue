@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <hello></hello>
+    <div class="view">
+      <dropzone></dropzone>
+    </div>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello.vue'
-
-export default {
-  name: 'app',
-  components: {
-    Hello
+  import Dropzone from './pages/dropzone/Dropzone.vue'
+  
+  export default {
+    name: 'app',
+    components: {
+      Dropzone
+    }
   }
-}
 </script>
+
