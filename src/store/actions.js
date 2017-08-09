@@ -53,17 +53,19 @@ export const handleFiles = function ({ commit, dispatch }, files){
  */
 export const processQ = ({ commit, dispatch, getters, state }) => {
   commit(types.SHIFT_DROPPED_Q) // Shift file from dropped queue & set it as current
-  const dropped = state.dropped.current
   
+  const dropped = state.dropped.current
   if(!dropped) { // No dropped file
     return null; // Send ERROR instead of null
   }
+  
+  commit(types.START_LOADING)
   
   OpenSubService.hash(dropped)
     .then(({moviehash}) => OpenSubService.getDetails([moviehash]))
     .then(({data}) => {
       Object.keys(data).forEach(hash => dispatch('addSummary', data[hash]))
-      
+
       // ? Remain some dropped files ?
       if(state.dropped.droppedQueue.length > 0){
         dispatch('processQ') // Re-exec the process
@@ -75,7 +77,6 @@ export const processQ = ({ commit, dispatch, getters, state }) => {
 
 
 export const addSummary = ({ commit }, summary) => {
-      console.log(summary)
   commit(types.ADD_SUMMARY, {
     hash : summary.MovieHash,
     IMBDId : summary.MovieImdbID,
@@ -86,4 +87,6 @@ export const addSummary = ({ commit }, summary) => {
     year: summary.MovieYear,
     subCount : summary.SubCount
   })
+  
+  // commit(types.END_LOADING)
 }

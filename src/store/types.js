@@ -12,6 +12,13 @@ export const REMOVE_ERROR       = 'REMOVE_ERROR'
 
 
 /**
+ * LOADER
+ */
+export const START_LOADING      = 'START_LOADING'
+export const END_LOADING        = 'END_LOADING'
+
+
+/**
  * DRAG & DROP
  */
 export const DRAG_ENTER         = 'DRAG_ENTER'
@@ -34,3 +41,4 @@ export const RESET_DROPPED_Q    = 'RESET_DROPPED_Q'
     // Summary part
 export const ADD_SUMMARY        = 'ADD_SUMMARY'
 export const RESET_SUMMARY_LIST = 'RESET_SUMMARY_LIST'
+

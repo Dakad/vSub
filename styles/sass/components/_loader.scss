@@ -1,22 +1,18 @@
-$duration: 5s;
-$flashmsg-text: #3c763d;
-$flashmsg-bg: #dff0d8;
-$flashmsg-border: #d6e9c6;
 
-.flashmsg {
-    opacity: 0;
-    position: absolute;
-    text-align: center;
-    width: calc(100% - 66px - 200px - 15px);
-    padding: 15px 0;
-    margin: 15px;
-    color: $flashmsg-text;
-    z-index: -999;
-    &.success {
-        -webkit-animation: flashmsg $duration ease-in; /* Safari 4+ */
-        -moz-animation: flashmsg $duration ease-in; /* Fx 5+ */
-        -o-animation: flashmsg $duration ease-in; /* Opera 12+ */
-        animation: flashmsg $duration ease-in; /* IE 10+, Fx 29+ */
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    width: 100%;
+    // background: rgba(#FFF, 0.1);
+    z-index: 50;
+    
+    .loader_bar{
+        width: 20%;
+        height: 3px;
+        background: rgba($sub-light, 0.7);
+        animation: loading 2.3s infinite;
     }
-    &.success { background-color: $flashmsg-bg; border: 1px solid $flashmsg-border; }
 }
