@@ -53,8 +53,8 @@ export const handleFiles = function ({ commit, dispatch }, files){
  */
 export const processQ = ({ commit, dispatch, getters, state }) => {
   commit(types.SHIFT_DROPPED_Q) // Shift file from dropped queue & set it as current
-  
   const dropped = state.dropped.current
+  
   if(!dropped) { // No dropped file
     return null; // Send ERROR instead of null
   }
@@ -69,6 +69,8 @@ export const processQ = ({ commit, dispatch, getters, state }) => {
       // ? Remain some dropped files ?
       if(state.dropped.droppedQueue.length > 0){
         dispatch('processQ') // Re-exec the process
+      }else{
+        commit(types.END_LOADING)
       }
     })
 
@@ -87,6 +89,4 @@ export const addSummary = ({ commit }, summary) => {
     year: summary.MovieYear,
     subCount : summary.SubCount
   })
-  
-  // commit(types.END_LOADING)
 }
