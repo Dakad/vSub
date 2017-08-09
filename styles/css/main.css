@@ -27,16 +27,19 @@ body {
   line-height: 1.4;
   color: #FFF; }
 
-.view {
+#app {
   position: absolute;
-  top: 40px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #262A2C; }
+
+.view {
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100%;
   height: calc(100% - 40px);
-  overflow: hidden;
-  background-color: #262A2C;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px; }
 

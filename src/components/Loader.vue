@@ -1,7 +1,6 @@
 <template>
   <div class="loader" v-if="isLoading">
     <div class="loader_bar"></div>
-    {{isLoading}}
   </div>
 </template>
 
@@ -12,4 +11,4 @@
     computed: mapGetters(['isLoading'])
   }
 
-<script>
+</script>
