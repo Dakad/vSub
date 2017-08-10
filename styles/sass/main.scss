@@ -4,6 +4,7 @@
  * You should always import these first
  */
 
+// @import 'abstracts/theme';
 @import 'abstracts/variables';
 
 /**
@@ -11,7 +12,6 @@
  */
 
 @import 'vendors/font-awesome/font-awesome';
-// @import 'vendors/sofiaprolight/sofiaprolight';
 
 /**
  * Base style
@@ -38,4 +38,5 @@
  */
 
 @import 'pages/dropzone';
+@import 'pages/summary';
 

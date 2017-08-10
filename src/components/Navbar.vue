@@ -25,7 +25,7 @@
         return [
           ['/settings', 'fa-cog ', 'Settings'],
           ['/casted', 'fa-rss ', 'Cast'],
-          ['/summary', 'fa-list-ul ', 'Summary', this.hasSummary],
+          ['/summary', 'fa-list-ul ', 'Summary'/*, this.hasSummary*/],
           ['/drop', 'fa-download ', 'Drop'],
         ]
       },
