@@ -2,8 +2,8 @@
     <nav class="bar actions" id="navBar">
       <a v-if="false" href="javascript:void(0)" id='closeNav' class="btn_close" onclick="closeNav()">&times;</a>
       {{width}}
-      <router-link class="item" v-for="[path, icon, label, isActive=false] in links" :to="path" 
-                    active-class="active" :style="itemStyle" :show="isActive"
+      <router-link class="item" v-for="[path, icon, label, isActive=true] in links" :to="path" 
+                    active-class="active" :style="itemStyle" v-show="isActive"
       >
         <i :class="['fa', 'fa-2x', icon]"></i>
       </router-link>
@@ -31,8 +31,9 @@
       },
     
       itemStyle (){
+        const activeLinks = this.links.filter(([,,,active=true]) => active)
         return {
-          width : `${(100 / this.links.length)}%`
+          width : `${(100 / activeLinks.length)}%`
         }
       }
     }
