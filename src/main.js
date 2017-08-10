@@ -25,7 +25,7 @@ Object.keys(components)
 
 // Instanciate the app and mount it to the DOM (#app)
 new Vue({ // eslint-disable-line no-new
-  el: '#app',
+  el: '#root',
   store,
   router : new VueRouter({mode: 'hash', routes}),
   render: (h) => h(App)
