@@ -1,6 +1,6 @@
 
-import Dropzone from '../pages/Dropzone.vue'
-
+import Dropzone from '../../pages/Dropzone.vue'
+// import Summary from '../../pages/Summary/Summary.vue'
 
 export default [
   { name: 'home', path: '/', redirect: '/drop'},
