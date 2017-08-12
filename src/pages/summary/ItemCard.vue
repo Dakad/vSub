@@ -6,10 +6,4 @@
   </article>
 
 </template>
-
-<script>
-  export default {
-    name: 'spinner',
-    props: ['spin'],
-  }
-</script>
+s
