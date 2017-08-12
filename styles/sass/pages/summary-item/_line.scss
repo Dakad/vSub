@@ -13,6 +13,8 @@ $checked : "\f00c", "bold", "#00FF00" ;
     padding: 10px 0 20px 35px;
     font-size: 1em;
     transition: 0.4s;
+    list-style-type: none;
+
 
     &:hover:not(:last-child) {  /* Gray bordered background-color on hover */
       background: $gray;
