@@ -1,4 +1,11 @@
-import * as types from '../types';
+import { 
+  DROPPED_Q, 
+  RESET_DROPPED_Q, 
+  SHIFT_DROPPED_Q,
+  ADD_SUMMARY,
+  RESET_SUMMARY_LIST
+
+} from '../types'
 
 const state = {
   droppedQueue: [],
@@ -8,20 +15,20 @@ const state = {
 
 
 const mutations = {
-  [types.DROPPED_Q] (state, files) {
+  [DROPPED_Q] (state, files) {
     state.droppedQueue = Array.from(files)
   },
-  [types.RESET_DROPPED_Q] (state) {
+  [RESET_DROPPED_Q] (state) {
     state.droppedQueue = []
   },
-  [types.SHIFT_DROPPED_Q] (state) {
+  [SHIFT_DROPPED_Q] (state) {
     state.current = state.droppedQueue.shift()
   },
   
-  [types.ADD_SUMMARY] (state, summary) {
+  [ADD_SUMMARY] (state, summary) {
     state.summaryList.push(summary)
   },
-  [types.RESET_SUMMARY_LIST] (state, summary) {
+  [RESET_SUMMARY_LIST] (state, summary) {
     state.summaryList = []
   }
 }
