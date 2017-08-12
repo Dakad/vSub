@@ -1,11 +1,14 @@
 <template>
   <transition>
-    <section>
-      <header>
+    <section class="summary">
+      <header class="summary_header">
         <h1>Summary of dropped files</h1>
-        <summary-search @search="searchMe"> </summary-search>
+        <div class="search_box" >
+          <hr>
+          <summary-search @search="searchMe" placeholder="Filter on name" > </summary-search>
+        </div>
       </header>
-      <ul class="summary">
+      <ul class="summary_list">
         <template v-for="dropped in filterList">
           <item-line :item="dropped" > </item-line>
         </template>
@@ -36,6 +39,7 @@
     
     methods : {
       searchMe (vid){
+        console.log('/*v-if="filterList.length > 7"*/');
         console.log(`Search for : '${vid}'`);
       },
     },
