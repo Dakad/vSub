@@ -1,18 +1,25 @@
 <template>
-  <div id="app">
-    <div class="view">
-        <!-- route outlet -->
-        <!-- component matched by the route will render here -->
-      <router-view></router-view>
-    </div>
-  </div>
+  <main id="app">
+    <loader> </loader>
+  
+    <navbar> </navbar>
+    
+    <!-- Component matched by route get rendered here -->
+    <router-view id="content"></router-view>
+  
+  </main>
 </template>
 
 <script>
+  import Loader from './components/Loader.vue'
+  import Navbar from './components/Navbar.vue'
   
   export default {
     name: 'app',
-    components: {  }
+    components: { 
+      Loader,
+      Navbar
+    }
   }
 </script>
 

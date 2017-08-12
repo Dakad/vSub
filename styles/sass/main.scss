@@ -4,14 +4,14 @@
  * You should always import these first
  */
 
+// @import 'abstracts/theme';
 @import 'abstracts/variables';
 
 /**
  * Code from third party vendors
  */
 
-// @import 'vendors/font-awesome/font-awesome';
-// @import 'vendors/sofiaprolight/sofiaprolight';
+@import 'vendors/font-awesome/font-awesome';
 
 /**
  * Base style
@@ -25,12 +25,12 @@
  */
 
 @import 'components/flashmsg';
+@import 'components/loader';
+@import 'components/spinner';
+@import 'components/navbar';
 
 // @import 'components/button';
 // @import 'components/form';
-// @import 'components/feed';
-// @import 'components/sticky-video';
-// @import 'components/validation-error';
 // @import 'components/checkbox';
 
 /**
@@ -38,14 +38,5 @@
  */
 
 @import 'pages/dropzone';
+@import 'pages/summary';
 
-
-
-// @import 'layout/flexbox';
-// @import 'layout/list';
-// @import 'layout/header';
-// @import 'layout/sidebar';
-// @import 'layout/filter';
-// @import 'layout/overlay-login';
-// @import 'layout/waterfall';
-// @import 'layout/pop-up';

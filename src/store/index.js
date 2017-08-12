@@ -7,6 +7,7 @@ import * as types from './types';
 
 import dragdrop from './modules/dragdrop';
 import dropped from './modules/dropped';
+import loader from './modules/loader';
 
 
 Vue.use(Vuex);
@@ -37,6 +38,8 @@ export default new Vuex.Store({
   modules: {
       dragdrop,
       dropped,
+      loader,
+      
 
   }
 });

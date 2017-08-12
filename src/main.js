@@ -1,24 +1,14 @@
 
 import Vue from 'vue'
-import Vue2Filters from 'vue2-filters'
-import VueRouter from 'vue-router'
 
-
-
-import routes from './routes/'
-import store from './store/'
+import boot from './boot'
 import App from './App.vue'
 
 
 
-Vue.use(Vue2Filters)
-Vue.use(VueRouter)
-
-
-
+// Instanciate the app and mount it to the DOM (#app)
 new Vue({ // eslint-disable-line no-new
-  el: '#app',
-  store,
-  router : new VueRouter({mode: 'hash', routes}),
+  el: '#root',
+  ...boot,
   render: (h) => h(App)
 })

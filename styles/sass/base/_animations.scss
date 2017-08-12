@@ -6,3 +6,9 @@
   100%  { opacity: 0;
           z-index: -99; }
 }
+
+
+@keyframes loading{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(100vw); }
+}

@@ -1,0 +1,87 @@
+$cast    : #03d7fc;
+$play    : orange;
+$checked : "\f00c", "bold", "#00FF00" ; 
+
+
+/* Remove margins and padding from the list */
+.summary {
+  margin: 0;
+  padding: 0;
+  /* Style the list items */
+  .item {
+    position: relative;
+    padding: 10px 0 20px 35px;
+    font-size: 1em;
+    transition: 0.4s;
+
+    &:hover:not(:last-child) {  /* Gray bordered background-color on hover */
+      background: $gray;
+      border-bottom : 1px solid $gray-lightest;
+    }
+
+    .vid {
+      text-decoration:none;
+      color:$gray-lightest;
+    }
+      
+    &.checked {
+      background: $gray;
+      
+      /* Add a "checked" mark when clicked on */
+      &::before {
+          content: nth($checked, 1);
+          font-family: FontAwesome;
+          font-style: unquote(nth($checked, 2));   
+          position: absolute;
+          left: 10px;
+          color: unquote(nth($checked, 3));
+      }
+    } // .checked
+    
+    
+  /* Style the actions button */
+  .actions{
+    position: absolute;
+    right:15px;
+
+    a {
+      color : white;
+      text-decoration:none;
+    }
+
+    .btn {
+      cursor :pointer;
+      color: white;
+      padding: 8px;
+      border-radius: 50%;
+
+      &.sub {
+        &:hover{
+            background-color: $primary;}
+      } // .sub
+
+
+      &.cast {
+        &:hover:not(.active){
+            background-color: $cast;}
+        &.active {
+            color : $cast;}
+      } // .cast    
+
+      &.play {
+        /* color : $play ;*/
+        &:hover{
+            background-color: $play;}
+      } // .play    
+
+
+      &.info {
+        &:hover{
+            background-color: $primary;}
+      } // .info 
+
+    }// .btn
+  }  // .actions
+  } // li
+} // ul
+

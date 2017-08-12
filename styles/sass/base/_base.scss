@@ -22,37 +22,28 @@ body {
   color: #FFF;
 }
 
-.view{
+#app {
   position: absolute;
-  top: 40px;
-  left: 0;
-  right: 0;
-  bottom: 0;
   width: 100%;
-  height: calc(100% - 40px);
+  height : 100%;
   overflow: hidden;
   background-color: #262A2C;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
 }
 
-.alert{
-  position: absolute;
+#content {
+  // top: 40px;
   top: 0;
   left: 0;
   right: 0;
-  color: #FFF;
-  background-color: #ec3845;
-  text-align: center;
-  font-size: 0.8rem;
-  padding: 4px 0px;
-  z-index: 100;
-  transform: translateY(-30px);
-  transition: transform 0.3s;
-  &.is-visible{
-    transform: translateY(0px);
-  }
+  bottom: 0;
+  height: calc(100% - 50px);
+  padding: 10px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  overflow:auto;
 }
+
+
 
 /* Modules
    ========================================================================== */
