@@ -17,7 +17,7 @@ import OpenSubtitleService from '../services/open-subtitle'
 // Properties
 
 // Init the service with the config
-const OpenSubService = new OpenSubtitleService(Config.openSubtitle)
+const OpenSubService = null /*new OpenSubtitleService(Config.openSubtitle)*/
 
 
 
