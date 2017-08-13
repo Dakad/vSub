@@ -4,7 +4,7 @@
         @dragenter="hasDragged(true)"  @dragleave="hasDragged(false)"
         @dragover.prevent="hasDragged(true)" @drop.prevent="drop($event.dataTransfer.files)">
   
-      <div :class="['dropzone', 'area', cls]">
+      <div :class="['dropzone', 'area', {'is-hover': this.isDragging}]">
         <input type="file" name="upload" id="upload" multiple 
                title="Click to upload file or drop your files here"
               @change="drop($event.target.files)"/>
@@ -26,7 +26,6 @@
   import { mapActions, mapGetters } from 'vuex'
   
   import { DRAG_ENTER, DRAG_LEAVE, HANDLE_FILES} from '../store/types'
-  import store from '../store/'
 
 
   export default {
@@ -34,19 +33,19 @@
     computed: {
       ...mapGetters(['isDragging']),
 
-      cls () { return {'is-hover': this.isDragging} },
-      
       isVisible () {
         return this.isDragging || this.$route.name === 'drop'
       }
     },
     methods: {
       drop: function(files) {
-        store.dispatch(HANDLE_FILES, files)
-        store.commit(DRAG_LEAVE)
+        this.$store.commit(DRAG_LEAVE)
+        this.$store.dispatch(HANDLE_FILES, files)
+            .then(() => this.$router.push('/dropped'))
+  
       },
       hasDragged : function (bool){
-        store.commit(bool ? DRAG_ENTER : DRAG_LEAVE )
+        this.$store.commit(bool ? DRAG_ENTER : DRAG_LEAVE )
       }
     }
   }
