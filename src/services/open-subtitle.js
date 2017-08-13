@@ -63,11 +63,11 @@ export default class OpenSub {
     return this.openSub.api.CheckMovieHash(this.token, hash)
   }
   
-  getSubtitles(vidParam) {
-    console.log(vidParam);
+  getSubtitles(vidHash,vidParam) {
+    console.log(vidHash);
     // Check Storage for subs
-    if (Storage.hasSubsFor(vidParam)) 
-      return Promise.resolve(Storage.getSubsFor(vidParam))
+    if (Storage.hasSubsFor(vidHash)) 
+      return Promise.resolve(Storage.getSubsFor(vidHash))
     
     // No Subs cached for this vid, call the API
     return this.openSub.api.SearchSubtitles(this.token,vidParam)
@@ -90,8 +90,8 @@ export default class OpenSub {
         // const subsId = list.map(({id, link, lang}) => ({
         //   id, link, lang
         // }))
-        // Storage.saveSubsFor(vidParam, subsId)
-        Storage.saveSubsFor(vidParam, list)
+        // Storage.saveSubsFor(vidHash, subsId)
+        Storage.saveSubsFor(vidHash, list)
         return list
       })
   }

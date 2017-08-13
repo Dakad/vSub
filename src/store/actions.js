@@ -82,7 +82,9 @@ export const processQ = ({ commit, dispatch, getters, state }) => {
 }
 
 
-
+/**
+ * Insert a new Summary in the list via commit. 
+ */
 export const addSummary = ({ commit }, payload) => {
   const {summary, size} = payload
   console.log(payload);
@@ -106,18 +108,33 @@ export const addSummary = ({ commit }, payload) => {
  * Fetch list of subtitle for the select summary
  *
  */
-export const fetchSubtitles = ({commit, dispatch, getters, state}, vidHash) => {
-  // const {hash, size} = getters.getSummary(vidHash)
-  const suma = getters.getSummary(vidHash)
-  console.log(vidHash, suma);
+export const fetchSubtitles = function ({commit, dispatch, getters, state}, vidHash){
+  const { size, IMBDId } = getters.getSummary(vidHash)
+  console.log(vidHash, vidHash, size, IMBDId);
 
   const params = Object.keys(state.langs).map(lang => ({
       sublanguageid : lang,
-      // moviehash : hash,
-      // moviebytesize : size,
+      moviehash : vidHash,
+      moviebytesize : size,
       limit : 10,
   }))
-  console.log(params);
+  
+  return OpenSubService.getSubtitles(vidHash,params)
+        .then(groupByLang)
+        .then(groups => Object.keys(groups)
+                .forEach(lang => commit(types.ADD_SUB_FOR, {
+                  lang, 
+                  hash : vidHash, 
+                  subs : groups[lang]
+                }))
+          )
 }
 
-
+const groupByLang = list => list.reduce((groups, sub) =>{
+  // ? Has a group for this sub lang
+  if(!groups.hasOwnProperty(sub.lang))
+    groups[sub.lang] = []
+  
+  groups[sub.lang].push(sub)
+  return groups
+},{})

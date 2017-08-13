@@ -40,7 +40,7 @@ export default new Vuex.Store({
       dragdrop,
       dropped,
       loader,
-      
+      subtitles,
 
   }
 });
