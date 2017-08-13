@@ -16,3 +16,6 @@ package-lock.json
 
 #Config file
 src/config/index.js
+
+#CSS files
+styles/css/main.css
