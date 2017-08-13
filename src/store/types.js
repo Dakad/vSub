@@ -2,6 +2,7 @@
  * ACTIONS
  */
 export const HANDLE_FILES       = 'handleFiles'
+export const FETCH_SUB          = 'fetchSubtitles'
  
 
 /**

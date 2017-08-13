@@ -99,3 +99,25 @@ export const addSummary = ({ commit }, payload) => {
     hasSub  : false, // ? Has some downloaded sub ?
   })
 }
+
+
+
+/**
+ * Fetch list of subtitle for the select summary
+ *
+ */
+export const fetchSubtitles = ({commit, dispatch, getters, state}, vidHash) => {
+  // const {hash, size} = getters.getSummary(vidHash)
+  const suma = getters.getSummary(vidHash)
+  console.log(vidHash, suma);
+
+  const params = Object.keys(state.langs).map(lang => ({
+      sublanguageid : lang,
+      // moviehash : hash,
+      // moviebytesize : size,
+      limit : 10,
+  }))
+  console.log(params);
+}
+
+
