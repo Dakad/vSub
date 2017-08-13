@@ -13,7 +13,7 @@
                    v-if="item.hasSub"
                    :to="'/summary/'+item.hash" :title="'Details on '+item.name">
       </router-link>
-      <span v-if="!item.hasSub" class="btn sub fa fa-file-text" @click="$emit('getSubtitle', item.hash)"></span>
+      <span :class="['btn sub fa fa-file-text']" @click="$emit('getSubtitle', item.hash)"></span>
     </span>
   </li>
 </template>
