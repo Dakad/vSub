@@ -15,6 +15,7 @@ import Promise from 'bluebird'
 
 // Mine
 import Hash from '../utils/hash'
+import { OpenSub as Storage} from './storage'
 
 
 // -------------------------------------------------------------------
@@ -33,9 +34,15 @@ export default class OpenSub {
       
     OSConfig.password = Krypto.createHash('md5').update(OSConfig.password).digest('hex')
     this.openSub = new OS(OSConfig)
-    this.openSub.login()
+    
+    // ? No token cached ?
+    this.token = Storage.getToken()
+    if(!this.token){
+      this.openSub.login()
         .then( ({token}) => this.token = token)
+        .then(Storage.saveToken)
         .catch(console.error)
+    }
   }
   
   hash(file) {
@@ -49,11 +56,17 @@ export default class OpenSub {
     })
   }
   
+  // TODO Handle the error on API Call
+  
   getDetails(hash) {
     if(!Array.isArray(hash)) hash = [hash]
     return this.openSub.api.CheckMovieHash(this.token, hash)
   }
-    
+  
+  getSubtitles(vids) {
+    console.log(vids);
+    // return this.openSub.api.SearchSubtitles(this.token,vids)
+  }
     
     
 }
