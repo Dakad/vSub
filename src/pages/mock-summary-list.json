@@ -1,0 +1,66 @@
+[{
+  "IMBDId": "3S5iNIN",
+  "hash": "8e245d9679d31e12",
+  "size" : 12909756,
+  "name": "Man from Nowhere, The (Ajeossi)",
+  "kind": "Male",
+  "year": 1995,
+  "subCount": 728
+}, {
+  "IMBDId": "AhyrkXPnCzA",
+  "hash": "8e245d9679d31e12",
+  "size" : 12909756,
+  "name": "Born to Win",
+  "kind": "Female",
+  "year": 2011,
+  "subCount": 48920
+}, {
+  "IMBDId": "Sm6Jel1Fy1mF",
+  "hash": "8e245d9679d31e12",
+  "size" : 12909756,
+  "name": "Reef, The",
+  "kind": "Female",
+  "season": 10,
+  "episode": 97,
+  "year": 2003,
+  "subCount": 34651,
+  "hasSub" : true
+}, {
+  "IMBDId": "pQJiJlpEnB",
+  "hash": "8e245d9679d31e12",
+  "size" : 12909756,
+  "name": "Silent Light (Stellet licht)",
+  "kind": "Male",
+  "season": 6,
+  "episode": 37,
+  "year": 2003,
+  "subCount": 18020
+}, {
+  "IMBDId": "NBkFFU",
+  "hash": "8e245d9679d31e12",
+  "size" : 12909756,
+  "name": "Babes in Toyland",
+  "kind": "Female",
+  "year": 1996,
+  "subCount": 49253
+}, {
+  "IMBDId": "zBWT1gdKLyUS",
+  "hash": "8e245d9679d31e12",
+  "size" : 12909756,
+  "name": "Triage",
+  "kind": "Male",
+  "year": 2009,
+  "subCount": 92,
+  "hasSub" : true
+}, {
+  "IMBDId": "brtYeXpJcR",
+  "hash": "8e245d9679d31e12",
+  "size" : 12909756,
+  "name": "Bite the Bullet",
+  "kind": "Female",
+  "season": 7,
+  "episode": 70,
+  "year": 1995,
+  "subCount": 1918,
+  "hasSub" : true
+}]
