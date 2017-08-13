@@ -1,0 +1,60 @@
+
+
+$searchIcon  : "\f002";
+
+
+.input-wrapper {
+  position: relative;
+  .input-icon {
+    position: absolute;
+    top: calc(50% - 0.4em);
+    /* Keep icon in center of input, regardless of the input height */
+    left: 10px;
+    z-index: 9;
+    color: #000;
+  }
+}
+
+/* Style the input */
+
+input[name=search] {
+  position: relative;
+  width: 25%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 1.1em;
+  padding: 12px 20px 12px 40px;
+  transition: width 0.3s ease-in-out;
+
+  &:focus {
+    width: 60%;
+  }
+}
+
+
+/* Style the "Search" button */
+
+.btn_search {
+  padding: 12px 20px;
+  width: 25%;
+  /* background: #d9d9d9; */
+  border: 1px solid #FFF;
+  color: #555;
+  position: relative;
+  font-size: 16px;
+  cursor: pointer;
+  &:hover {
+    background-color: #bbb;
+  }
+
+  &:before {
+    content: $searchIcon;
+    font-family: FontAwesome;
+    font-style: normal;
+    position: absolute;
+    left: 10px;
+    margin: 10px 0;
+    color: $sub;
+  }
+} // .btn_search

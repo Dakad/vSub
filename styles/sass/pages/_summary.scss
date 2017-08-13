@@ -1,0 +1,39 @@
+@import '../components/summary-item/testimonial';
+@import '../components/summary-item/card';
+@import '../components/summary-item/line';
+
+
+
+/* Summary Header */
+.summary_header {
+  background-color: $blue-whale-o;
+  padding: 20px 40px;
+  margin-bottom : 20px;
+  color: white;
+  text-align: center;
+  
+  /* Clear floats after the header */
+  &:after {
+    content: "";
+    clear: both;
+  }
+
+  h1 {
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  hr{
+    margin-bottom : 10px;}
+  
+
+} // header
+
+
+/* Summary LIst */
+.summary_list {
+  overflow : auto;
+  box-sizing: border-box;
+  
+}  //.summary
+
