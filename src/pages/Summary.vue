@@ -9,8 +9,10 @@
         </div>
       </header>
       <ul class="summary_list">
-        <template v-for="dropped in filterList">
-          <item-line :item="dropped" > </item-line>
+        <template v-for="(dropped,index) in filterSummaryList">
+          <item-line :item="dropped" :key="index"
+            @cast="castVid" @play="playVid" @getSubtitle="fetchSubtitles"
+          ></item-line>
         </template>
       </ul>
     </section>
@@ -22,7 +24,12 @@
 
 <script>
   import mocks from './mock-summary-list'
+  import { mapActions, mapGetters } from 'vuex'
+
   import {Search, ItemLine} from '../components/summary/'
+  import { 
+    FETCH_SUB,
+  } from '../store/types'
 
   export default {
     name: 'summary',
@@ -31,16 +38,32 @@
       'SummarySearch' : Search
     },
     props: [],
-    
+    data (){
+      return {
+        searchTerm : ''
+        
+      }
+    },
     computed : {
-      filterList : () =>  mocks,
+      filterSummaryList(){
+        return this.$store.getters.filterSummaryList(this.searchTerm)
+      },
       
     },
     
     methods : {
+      ...mapActions(['fetchSubtitles']),
+
       searchMe (vid){
+        this.searchTerm = vid
         console.log('/*v-if="filterList.length > 7"*/');
         console.log(`Search for : '${vid}'`);
+      },
+      castVid(vidHash){
+        console.log(`Cast vid hash : '${vidHash}'`);
+      },
+      playVid(vidHash){
+        console.log(`Play vid hash : '${vidHash}'`);
       },
     },
     
