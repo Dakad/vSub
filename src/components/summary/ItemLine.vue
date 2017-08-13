@@ -6,15 +6,13 @@
       <span v-else>S{{item.season}}E{{item.episode}}</span>
       </span>
     </router-link>
-    <span class="actions">
-      <span v-if="item.hasSub" class="btn cast fa fa-rss" @click="$emit('cast', item.hash)"></span>
-      <span v-if="item.hasSub" class="btn play fa fa-play" @click="$emit('play', item.hash)"></span>
-      <router-link class="btn info fa fa-info-circle" 
-                   v-if="item.hasSub"
-                   :to="'/summary/'+item.hash" :title="'Details on '+item.name">
-      </router-link>
-      <span :class="['btn sub fa fa-file-text']" @click="$emit('getSubtitle', item.hash)"></span>
-    </span>
+    <actions-buttons :hash="item.hash" :hasSub="item.hasSub"
+        @cast="$emit('cast', item.hash)" 
+        @play="$emit('play', item.hash)" 
+        @fetchSubtitle="$emit('getSubtitle', item.hash)"
+        @downloadSubtitle="$emit('downloadSubtitle', item.hash)"
+    >
+    </actions-buttons>
   </li>
 </template>
 
