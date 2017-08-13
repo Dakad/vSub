@@ -5,7 +5,8 @@
  */
  
  export default {
-   'spinner' : require("./Spinner.vue"),
-   'summarySearch' : require("./summary/SearchBox.vue"),
+   'spinner'        : require("./Spinner.vue"),
+   'summarySearch'  : require("./summary/SearchBox.vue"),
+   'actionsButtons' : require("./ActionsButtons.vue"),
  
  }
