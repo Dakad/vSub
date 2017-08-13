@@ -8,7 +8,7 @@
 // Built-in
 
 // Mine
-import * as types from './types';
+import * as types from './types'
 import Config from '../config'
 import OpenSubtitleService from '../services/open-subtitle'
 
@@ -17,7 +17,7 @@ import OpenSubtitleService from '../services/open-subtitle'
 // Properties
 
 // Init the service with the config
-const OpenSubService = null /*new OpenSubtitleService(Config.openSubtitle)*/
+const OpenSubService = new OpenSubtitleService(Config.openSubtitle)
 
 
 
@@ -34,7 +34,6 @@ export const error = ({ commit }, filename) => {
 }
 
 
-
 /**
  * Add a new subtitle to the list
  * @param files FileList dropped files
@@ -44,7 +43,7 @@ export const handleFiles = function ({ commit, dispatch }, files){
     return null // TODO: Handle this error ?
   }
   commit(types.DROPPED_Q, files) // Add all dropped files to dropped queue
-  dispatch('processQ') // Exec process for the files in queue
+  return dispatch('processQ') // Exec process for the files in queue
 }
 
 
@@ -61,32 +60,42 @@ export const processQ = ({ commit, dispatch, getters, state }) => {
   
   commit(types.START_LOADING)
   
-  OpenSubService.hash(dropped)
+  return OpenSubService.hash(dropped)
     .then(({moviehash}) => OpenSubService.getDetails([moviehash]))
-    .then(({data}) => {
-      Object.keys(data).forEach(hash => dispatch('addSummary', data[hash]))
-
+    .then((res) => {
+      const {statut, data} = res
+      console.log(res);
+      Object.keys(data)
+        .filter(h => data[h] != undefined) // Only movie checked
+        .forEach(hash => dispatch('addSummary', {
+            summary : data[hash], 
+            size    : dropped.size
+        }))
+      
       // ? Remain some dropped files ?
       if(state.dropped.droppedQueue.length > 0){
-        dispatch('processQ') // Re-exec the process
+        return dispatch('processQ') // Re-exec the process
       }else{
-        commit(types.END_LOADING)
+        return commit(types.END_LOADING)
       }
     })
-
 }
 
 
 
-export const addSummary = ({ commit }, summary) => {
+export const addSummary = ({ commit }, payload) => {
+  const {summary, size} = payload
+  console.log(payload);
   commit(types.ADD_SUMMARY, {
-    hash : summary.MovieHash,
-    IMBDId : summary.MovieImdbID,
-    name: summary.MovieName,
-    kind : summary.MovieKind,
-    season: summary.SeriesSeason,
-    episode: summary.SeriesEpisode,
-    year: summary.MovieYear,
-    subCount : summary.SubCount
+    size,
+    hash    : summary.MovieHash,
+    IMBDId  : summary.MovieImdbID,
+    name    : summary.MovieName,
+    kind    : summary.MovieKind,
+    season  : summary.SeriesSeason,
+    episode : summary.SeriesEpisode,
+    year    : summary.MovieYear,
+    subCount: summary.SubCount,
+    hasSub  : false, // ? Has some downloaded sub ?
   })
 }
