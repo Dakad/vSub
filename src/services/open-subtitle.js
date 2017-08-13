@@ -64,7 +64,6 @@ export default class OpenSub {
   }
   
   getSubtitles(vidHash,vidParam) {
-    console.log(vidHash);
     // Check Storage for subs
     if (Storage.hasSubsFor(vidHash)) 
       return Promise.resolve(Storage.getSubsFor(vidHash))

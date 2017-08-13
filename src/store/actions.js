@@ -122,12 +122,13 @@ export const fetchSubtitles = function ({commit, dispatch, getters, state}, vidH
   return OpenSubService.getSubtitles(vidHash,params)
         .then(groupByLang)
         .then(groups => Object.keys(groups)
-                .forEach(lang => commit(types.ADD_SUB_FOR, {
+                .forEach(lang => commit(types.ADD_FETCHED_SUB_FOR, {
                   lang, 
                   hash : vidHash, 
                   subs : groups[lang]
                 }))
-          )
+        ).then(_ => getters.getSummary(vidHash).hasSub = true)
+        
 }
 
 const groupByLang = list => list.reduce((groups, sub) =>{
