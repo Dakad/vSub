@@ -46,7 +46,7 @@
     },
     computed : {
       filterSummaryList(){
-        return this.$store.getters.filterSummaryList(this.searchTerm)
+        return this.$store.getters.getSummaryList(this.searchTerm)
       },
       
     },
