@@ -16,9 +16,11 @@ $checked : "\f00c", "bold", "#00FF00" ;
     list-style-type: none;
 
 
-    &:hover:not(:last-child) {  /* Gray bordered background-color on hover */
+    &:hover {  /* Gray background-color on hover */
       background: $gray;
-      border-bottom : 1px solid $gray-lightest;
+      &:not(:last-child) {  /* Gray bordered on hover */
+        border-bottom : 1px solid $gray-lightest;
+      }
     }
 
     .vid {
