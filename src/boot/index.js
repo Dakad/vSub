@@ -2,15 +2,17 @@ import Vue from 'vue'
 
 import components from '../components/global';
 
+import * as filters from './filters'
 import router from './router/'
 import store from '../store/'
 
 
 //
-// Filters
+// Plugins : All externed plugins 
 //
 
-require('./filters')
+require('./plugins')
+
 
 
 /**
@@ -21,8 +23,17 @@ Object.keys(components)
       .forEach(tag => Vue.component(tag, components[tag]));
 
 
+/**
+ * Register Global Filters
+ *
+ */
+Object.keys(filters)
+      .forEach(name => Vue.filter(name, filters[name]));
+      
+
+
 
 export default {
   router,
-  store
+  store,
 }
