@@ -8,5 +8,7 @@
    'spinner'        : require("./Spinner.vue"),
    'summarySearch'  : require("./summary/SearchBox.vue"),
    'actionsButtons' : require("./ActionsButtons.vue"),
+   'tabs'           : require("./Tabs.vue"),
+   'tab'            : require("./TabItem.vue"),
  
  }
