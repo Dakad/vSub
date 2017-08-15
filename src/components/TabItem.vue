@@ -4,7 +4,7 @@
 <template>
   <article :ref="'tab_'+id" :class="['content',{ active: isActive }]">
     <div class="btn close" @click="isActive = false">
-      <i class="fa fa-times"></i>
+      <i class="fa fa-lg fa-times"></i>
     </div> 
     <slot></slot>
   </article>

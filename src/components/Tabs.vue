@@ -20,6 +20,11 @@
 
 export default {
   name : 'tabs',
+  props : {
+    startupTab : {
+      required:false,
+    }
+  },
   data (){
     return {
       tabsList : [],
@@ -30,7 +35,12 @@ export default {
     this.tabsList = this.$children
   },
   mounted () {
-    
+    let tab = 0
+    if(this.startupTab){
+      const index = this.tabsList.findIndex(t => t.hash == this.startupTab)
+      tab = (index !== -1) ? index : 0
+    }
+    this.changeTab(tab)
   },
   computed : {
     
