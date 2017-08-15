@@ -16,6 +16,7 @@ const WEEK = DAY * 7
 const MONTH = DAY * 30
 const YEAR = DAY * 365
 
+const UNITS = ['B', 'kB', 'Mb', 'Gb'];
 
 
 
@@ -47,4 +48,26 @@ export const timeAgo = dte => {
   } else {
     return pluralize(~~(ago / YEAR), ' year')
   }
+}
+
+
+export const sizeHuman = size => {
+  // Ref : https://github.com/sindresorhus/pretty-bytes
+  size = Number.parseFloat(size)
+  if (!Number.isFinite(size)) 
+		throw new TypeError(`Expected a finite number, got ${typeof size}: ${size}`)
+
+	const neg = size < 0;
+
+	if (neg) 
+		size = -size;
+	
+	if (size < 1) 
+		return (neg ? '-' : '') + size + ' B';
+	
+	const exponent = Math.min(Math.floor(Math.log10(size) / 3), UNITS.length - 1);
+	const sizeStr = Number((size / Math.pow(1000, exponent)).toPrecision(3));
+	const unit = UNITS[exponent];
+
+	return (neg ? '-' : '') + sizeStr + ' ' + unit;
 }
