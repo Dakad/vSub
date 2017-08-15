@@ -30,14 +30,28 @@ export const hasSub = state => (vidHash, langs = 'eng') => {
   return langs.every(l => sub[l] !== undefined)
 }
 
-export const getFetchedSub = ({subtitles}) => {
+export const getFetchedSubs = ({subtitles}) => {
     return (hash, lang) => {
-      const containsLang = lang && (subtitles.fetched[hash] || {}).hasOwnProperty(lang)
-      if (!subtitles.fetched.hasOwnProperty(hash) || !containsLang)
+      // ? Has fetched for this vidHash ? 
+      if (!subtitles.fetched.hasOwnProperty(hash))
         return {}
-
+      
       const subs = subtitles.fetched[hash]
-      return (subs && containsLang) ? subs[lang] : subs;
+      
+      // ? Want by the lang ?
+      if(lang !== undefined)
+        return (subs || {}).hasOwnProperty(lang) ? subs[lang] : [];
+      
+      return subs
+    }
+}
+
+export const getFetchedSubLangs = ({subtitles}) => {
+    return (hash) => {
+      // ? Has fetched some subs for this vidHash ? 
+      return (subtitles.fetched.hasOwnProperty(hash))
+        ? Object.keys(subtitles.fetched[hash])
+        : []
     }
 }
 
