@@ -1,6 +1,6 @@
 $cast    : #03d7fc;
 $play    : orange;
-$checked : "\f00c", "bold", "#00FF00" ; 
+$checked : "\f00c", $turquoise ; 
 
 
 /* Remove margins and padding from the list */
@@ -27,20 +27,19 @@ $checked : "\f00c", "bold", "#00FF00" ;
       text-decoration:none;
       color:$gray-lightest;
     }
-      
-    &.checked {
+    
+    &.fetched {
       background: $gray;
       
-      /* Add a "checked" mark when clicked on */
+      /* Add a "checked" mark when fetched the subs */
       &::before {
           content: nth($checked, 1);
           font-family: FontAwesome;
-          font-style: unquote(nth($checked, 2));   
           position: absolute;
           left: 10px;
-          color: unquote(nth($checked, 3));
+          color: nth($checked, 2);
       }
-    } // .checked
+    }
     
     
   /* Style the actions button */
