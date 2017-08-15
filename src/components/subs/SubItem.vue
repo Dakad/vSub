@@ -3,11 +3,10 @@
 
 <template>
   <div class="sub">
-    <label class="ago">{{sub.date | timeAgo}} ago </label>
-    <label class="name">{{sub.name | truncate(50)}}</label>
-    <label class="size">({{sub.name | sizeHuman}})</label>
+    <label class="name">{{sub.filename | truncate(60)}}</label>
+    <label class="size">({{sub.date | timeAgo}})</label>
     <span class="actions">
-      <button class="download"><i class="fa fa-cloud-download"></i></button>
+      <span class="btn fa fa-cloud-download"></span>
     </span>
     
   </div>
@@ -24,8 +23,14 @@ export default {
   },
   data (){
     return {
-      isActive : false,
+      isDownloaded : false,
     }
+  },
+  created () {
+      
+  },
+  mounted () {
+    console.log(this.sub);
   },
 }
 
