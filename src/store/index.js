@@ -15,7 +15,7 @@ Vue.use(Vuex);
 
 
 const state = {
-  langs: {en: 'English', fr: 'Français', es : 'Español'},
+  langs: {eng: 'English', fre: 'Français', spa : 'Español'},
   error: false,
 };
 

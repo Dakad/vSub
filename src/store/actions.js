@@ -64,7 +64,7 @@ export const processQ = ({ commit, dispatch, getters, state }) => {
     .then(({moviehash}) => OpenSubService.getDetails([moviehash]))
     .then((res) => {
       const {statut, data} = res
-      console.log(res);
+
       Object.keys(data)
         .filter(h => data[h] != undefined) // Only movie checked
         .forEach(hash => dispatch('addSummary', {
@@ -110,7 +110,6 @@ export const addSummary = ({ commit }, payload) => {
  */
 export const fetchSubtitles = function ({commit, dispatch, getters, state}, vidHash){
   const { size, IMBDId } = getters.getSummary(vidHash)
-  console.log(vidHash, vidHash, size, IMBDId);
 
   const params = Object.keys(state.langs).map(lang => ({
       sublanguageid : lang,

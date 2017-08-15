@@ -1,5 +1,5 @@
 <template>
-  <li :class="['item', {checked:item.hasSub}]">
+  <li :class="['item', {fetched:item.hasSub}]">
     <router-link class="vid"  :to="'/summary/'+item.hash" :title="'Details on '+item.name">
       {{item.name}}&nbsp;
       <span v-if="item.kind == 'movie'">({{item.year}})</span>
@@ -13,6 +13,7 @@
         @downloadSubtitle="$emit('downloadSubtitle', item.hash)"
     >
     </actions-buttons>
+    <slot name="subs"> </slot>
   </li>
 </template>
 

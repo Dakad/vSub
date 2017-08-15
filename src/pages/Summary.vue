@@ -1,18 +1,24 @@
 <template>
   <transition>
     <section class="summary">
-      <header class="summary_header">
+      <header class="summary_header" v-if="filterSummaryList.length > 7">
         <h1>Summary of dropped files</h1>
         <div class="search_box" >
           <hr>
-          <summary-search @search="searchMe" placeholder="Filter on name" > </summary-search>
+          <summary-search v-if="filterSummaryList.length > 7" 
+                          @search="searchMe" 
+                          placeholder="Filter on name" 
+          > </summary-search>
         </div>
       </header>
+      
       <ul class="summary_list">
-        <template v-for="(dropped,index) in filterSummaryList">
-          <item-line :item="dropped" :key="index"
-            @cast="castVid" @play="playVid" @getSubtitle="fetchSubtitles"
-          ></item-line>
+        <template v-for="(summary,index) in filterSummaryList">
+          <item-line :item="summary" :key="index"
+            @cast="castVid" @play="playVid" @getSubtitle="fetchSubs"
+          >
+            <subs v-if="displaySubTabs" slot="subs" :vid="summary.hash"> </subs>
+          </item-line>
         </template>
       </ul>
     </section>
@@ -40,7 +46,8 @@
     props: [],
     data (){
       return {
-        searchTerm : ''
+        searchTerm : '',
+        displaySubTabs : false
         
       }
     },
@@ -52,12 +59,15 @@
     },
     
     methods : {
-      ...mapActions(['fetchSubtitles']),
-
+      // ...mapActions(['fetchSubtitles']),
       searchMe (vid){
         this.searchTerm = vid
-        console.log('/*v-if="filterList.length > 7"*/');
         console.log(`Search for : '${vid}'`);
+      },
+      fetchSubs(vidHash){
+        console.log(`Fetch subs for : '${vidHash}'`)
+        this.$store.dispatch('fetchSubtitles',vidHash)
+                    .then(_ => this.displaySubTabs = true)
       },
       castVid(vidHash){
         console.log(`Cast vid hash : '${vidHash}'`);
