@@ -12,32 +12,13 @@
         </div>
       </header>
       
-      <tabs startupTab="spang">
-        <tab name="Onglish" hash="pop">
-          <p>
-           Dorum ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper morbi tincidunt ornare massa eget egestas purus. Nec ullamcorper sit amet risus nullam eget. Justo eget magna fermentum iaculis eu non diam phasellus. us.
-          </p>
-        </tab>
-        
-        <tab name="Spanglish" hash="spang">
-          <p>
-            Orci eu lobortis elementum nibh tellus molestie nunc. Nunc aliquet bibendum enim facilisis. Volutpat blandit aliquam etiam erat velit. Turpis tincidunt id aliquet risus feugiat in ante metus. Sagittis orci a scelerisque purus semper eget duis at. Nisl rhoncus mattis rhoncus urna neque viverra. Faucibus nisl tincidunt eget nullam non nisi est. 
-          </p>
-          <p>
-            Leo a diam sollicitudin tempor id eu. Amet purus gravida quis blandit turpis cursus in hac. Neque viverra justo nec ultrices dui. Felis donec et odio pellentesque diam volutpat commodo sed. Pulvinar sapien et ligula ullamcorper malesuada proin libero. Nunc sed id semper risus in. Vitae purus faucibus ornare suspendisse sed nisi lacus.
-          </p>
-        </tab>
-        
-        <tab name="Tetsuo" hash="azerty">
-          <h1>Yep, That works Beach !!! </h1>
-        </tab>
-      
-      </tabs>
       <ul class="summary_list">
-        <template v-for="(dropped,index) in filterSummaryList">
-          <item-line :item="dropped" :key="index"
+        <template v-for="(summary,index) in filterSummaryList">
+          <item-line :item="summary" :key="index"
             @cast="castVid" @play="playVid" @getSubtitle="fetchSubtitles"
-          ></item-line>
+          >
+            <subs slot="subs" :vid="summary.hash"> </subs>
+          </item-line>
         </template>
       </ul>
     </section>
@@ -65,13 +46,15 @@
     props: [],
     data (){
       return {
-        searchTerm : ''
+        searchTerm : '',
+        displaySubTabs : false
         
       }
     },
     computed : {
       filterSummaryList(){
-        return this.$store.getters.getSummaryList(this.searchTerm)
+        // return this.$store.getters.getSummaryList(this.searchTerm)
+        return mocks.slice(0,3)
       },
       
     },
