@@ -60,8 +60,9 @@ export default class OpenSub {
   
   getDetails(hash) {
     if(!Array.isArray(hash)) hash = [hash]
+    console.log(hash);
     if (Storage.hasDetailsFor(hash)) 
-      return Promise.resolve(Storage.getDetailsFor(hash))
+      return Promise.resolve({data : Storage.getDetailsFor(hash)})
     
     return this.openSub.api.CheckMovieHash(this.token, hash)
                 .then(res => {

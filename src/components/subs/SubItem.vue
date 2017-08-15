@@ -6,7 +6,7 @@
     <label class="name">{{sub.filename | truncate(60)}}</label>
     <label class="size">({{sub.date | timeAgo}})</label>
     <span class="actions">
-      <span class="btn fa fa-cloud-download"></span>
+      <span class="btn download fa fa-cloud-download"></span>
     </span>
     
   </div>

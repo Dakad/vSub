@@ -58,10 +58,10 @@ $checked : "\f00c", $turquoise ;
       padding: 8px;
       border-radius: 50%;
 
-      &.sub {
+      &.sub, &.info, &.download {
         &:hover{
-            background-color: $primary;}
-      } // .sub
+            background-color: $primary-light;}
+      } // .sub + .info + .download
 
 
       &.cast {
@@ -77,11 +77,6 @@ $checked : "\f00c", $turquoise ;
             background-color: $play;}
       } // .play    
 
-
-      &.info {
-        &:hover{
-            background-color: $primary;}
-      } // .info 
 
     }// .btn
   }  // .actions
