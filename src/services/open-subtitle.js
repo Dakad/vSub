@@ -75,7 +75,7 @@ export default class OpenSub {
         idGZ : data.IDSubtitleFile,
         hash : data.SubHash,
         matchedBy : data.MatchedBy,
-        lang : data.ISO639,
+        lang : data.SubLanguageID,
         encoding : data.SubEncoding ,
         date : data.SubAddDate,
         filename : data.SubFileName,
