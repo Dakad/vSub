@@ -60,7 +60,15 @@ export default class OpenSub {
   
   getDetails(hash) {
     if(!Array.isArray(hash)) hash = [hash]
+    if (Storage.hasDetailsFor(hash)) 
+      return Promise.resolve(Storage.getDetailsFor(hash))
+    
     return this.openSub.api.CheckMovieHash(this.token, hash)
+                .then(res => {
+                  if(res.data)
+                    Storage.saveDetailsFor(hash, res.data)
+                  return res
+                })
   }
   
   getSubtitles(vidHash,vidParam) {
