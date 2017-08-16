@@ -13,7 +13,7 @@
         @downloadSubtitle="$emit('downloadSubtitle', item.hash)"
     >
     </actions-buttons>
-    <slot name="subs"> </slot>
+    <slot v-if="item.hasSub" name="subs"> </slot>
   </li>
 </template>
 

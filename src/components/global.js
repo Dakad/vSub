@@ -12,9 +12,9 @@
    'actionsButtons' : require("./ActionsButtons.vue"),
    
    'tabs'           : require("./tabs/Tabs.vue"),
-   'tabItem'            : require("./tabs/TabItem.vue"),
+   'tabItem'        : require("./tabs/TabItem.vue"),
    
    'subs'           : require("./subs/Subs.vue"),
-   'subItem'            : require("./subs/SubItem.vue"),
+   'subItem'        : require("./subs/SubItem.vue"),
  
  }
