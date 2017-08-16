@@ -6,7 +6,7 @@
                    v-if="$route.name !== 'details'"
                    :to="'/summary/'+hash" :title="'Details on '+name">
       </router-link>
-      <span :class="['btn sub fa fa-file-text']" @click="$emit((hasSub ?'download' : 'fetch') +'Subtitle', hash)"></span>
+      <span :class="['btn sub fa fa-file-text']" @click="$emit('fetchSubtitle', hash)"></span>
     </span>
 </template>
 
