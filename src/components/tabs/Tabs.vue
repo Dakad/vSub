@@ -36,11 +36,11 @@
     },
     mounted () {
       let tab = 0
-      if(this.startupTab){
-        const index = this.tabsList.findIndex(t => t.hash == this.startupTab)
+      if(this.startupTab && this.tabsList.length > 0){
+        const index = this.tabsList.findIndex((t,i) => i == this.startupTab || t.hash == this.startupTab)
         tab = (index !== -1) ? index : 0
+        this.changeTab(tab)
       }
-      this.changeTab(tab)
     },
     computed : {
       

@@ -3,7 +3,7 @@
 
 <template>
   <div>
-  <tabs>
+  <tabs startupTab="eng">
     <tab-item  v-for=" lang in fetchLangSubtitlesList" :name="langs[lang]" :hash="lang">
       <sub-item v-for=" sub in getFetchedSubList(lang)" :sub="sub"> </sub-item>
     </tab-item>

@@ -10,10 +10,9 @@
         @cast="$emit('cast', item.hash)" 
         @play="$emit('play', item.hash)" 
         @fetchSubtitle="$emit('getSubtitle', item.hash)"
-        @downloadSubtitle="$emit('downloadSubtitle', item.hash)"
     >
     </actions-buttons>
-    <slot v-if="item.hasSub" name="subs"> </slot>
+    <slot v-show="item.hasSub" name="subs"> </slot>
   </li>
 </template>
 

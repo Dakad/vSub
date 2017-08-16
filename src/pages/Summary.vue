@@ -15,7 +15,7 @@
       <ul class="summary_list">
         <template v-for="(summary,index) in filterSummaryList">
           <item-line :item="summary" :key="index"
-            @cast="castVid" @play="playVid" @getSubtitle="fetchSubs"
+            @cast="castVid" @play="playVid" @getSubtitle="fetchSubs(summary.hash,summary.hasSub)"
           >
             <subs v-if="displaySubTabs" slot="subs" :vid="summary.hash"> </subs>
           </item-line>
@@ -64,10 +64,13 @@
         this.searchTerm = vid
         console.log(`Search for : '${vid}'`);
       },
-      fetchSubs(vidHash){
-        console.log(`Fetch subs for : '${vidHash}'`)
-        this.$store.dispatch('fetchSubtitles',vidHash)
+      fetchSubs(vidHash, hasSub){
+        // console.log(`Fetch subs for : '${vidHash}'`)
+        if(!hasSub)
+          this.$store.dispatch('fetchSubtitles',vidHash)
                     .then(_ => this.displaySubTabs = true)
+        else
+          this.displaySubTabs = !this.displaySubTabs
       },
       castVid(vidHash){
         console.log(`Cast vid hash : '${vidHash}'`);
