@@ -11,6 +11,8 @@ const localStorage = window.localStorage;
  */
 const KEY_FOR_OPEN_SUB_API_TOKEN = 'spYPIHMPg4';
 
+const KEY_FOR_HASH = 'HASH_FOR_';
+
 const KEY_FOR_OPEN_SUB_FOR = 'OPEN_SUB_FOR_';
 
 const KEY_FOR_OPEN_DETAILS_FOR = 'OPEN_DETAILS_FOR_';
@@ -39,6 +41,17 @@ export const OpenSub = {
 
  getToken: _ => unmarshall(KEY_FOR_OPEN_SUB_API_TOKEN),
 
+
+ /**
+  * Hash FOR DROPPED
+  *
+  */
+ 
+ hasHashFor : hash => localStorage.hasOwnProperty(KEY_FOR_HASH + hash),
+
+ saveHashFor: (hash, data) => marshall(KEY_FOR_HASH + hash, data),
+
+ getHashFor: hash => unmarshall(KEY_FOR_HASH + hash),
 
  /**
   * DETAILS FOR DROPPED

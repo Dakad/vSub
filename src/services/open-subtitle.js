@@ -37,30 +37,49 @@ export default class OpenSub {
     
     // ? No token cached ?
     this.token = Storage.getToken()
-    if(!this.token){
-      this.openSub.login()
+    if(!this.token)
+      this.getLogin()
+    
+  }
+  
+  handleError(err){
+    const msg = err.message
+    err.code = Number.parseInt(msg.slice(0,3))
+    err.msg = msg.slice(4)
+    throw err
+  }
+  
+  
+  getLogin(){
+    this.openSub.login()
         .then( ({token}) => this.token = token)
         .then(Storage.saveToken)
-        .catch(console.error)
-    }
+        .catch(this.handleError)
   }
   
   hash(file) {
+    const {name, size} = file
+    if (Storage.hasHashFor(name)) 
+      return Promise.resolve(Storage.getHashFor(name))
+
     return new Promise((resolve, reject) => {
       return Hash(file, (err, data) => {
         return (err) ? reject(err) : resolve({
           moviehash: data,
-          moviebytesize : file.size
+          moviebytesize : size
         });
       })
     })
+    .then(hash => {
+      Storage.saveHashFor(name, hash)
+      return hash
+    })
   }
   
-  // TODO Handle the error on API Call
   
   getDetails(hash) {
     if(!Array.isArray(hash)) hash = [hash]
-    console.log(hash);
+    // Check the Storage first for some details on vid
     if (Storage.hasDetailsFor(hash)) 
       return Promise.resolve({data : Storage.getDetailsFor(hash)})
     
@@ -70,6 +89,7 @@ export default class OpenSub {
                     Storage.saveDetailsFor(hash, res.data)
                   return res
                 })
+                .catch(this.handleError)
   }
   
   getSubtitles(vidHash,vidParam) {
@@ -102,6 +122,7 @@ export default class OpenSub {
         Storage.saveSubsFor(vidHash, list)
         return list
       })
+      .catch(this.handleError)
   }
     
     
