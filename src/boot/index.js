@@ -14,6 +14,13 @@ import store from '../store/'
 require('./plugins')
 
 
+//
+// Global Event Bus
+//
+
+require('./event-bus')
+
+
 
 /**
  * Register Global Components
@@ -30,6 +37,7 @@ Object.keys(components)
 Object.keys(filters)
       .forEach(name => Vue.filter(name, filters[name]));
       
+
 
 
 
