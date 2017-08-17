@@ -1,6 +1,6 @@
 <template>
   <span class="actions">
-      <span v-if="hasSub" class="'btn cast fa fa-rss" 
+      <span v-if="hasSub" class="btn cast fa fa-rss" 
                           @click="$emit('cast', hash)"></span>
                           
       <span v-if="hasSub" class="btn play fa fa-play" 
