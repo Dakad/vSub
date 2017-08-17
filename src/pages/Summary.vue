@@ -68,6 +68,7 @@
         // console.log(`Fetch subs for : '${vidHash}'`)
         if(!hasSub)
           this.$store.dispatch('fetchSubtitles',vidHash)
+                    .then(_ => this.$bus.$emit('FINISH_FETCHING', vidHash))
                     .then(_ => this.displaySubTabs = true)
         else
           this.displaySubTabs = !this.displaySubTabs
