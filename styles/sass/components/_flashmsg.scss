@@ -3,23 +3,70 @@ $flashMsg-text: #3c763d;
 $flashMsg-bg: #dff0d8;
 $flashMsg-border: #d6e9c6;
 
-.flash_msg {
-  opacity: 0;
-  position: absolute;
-  text-align: center;
-  width: calc(100% - 66px - 200px - 15px);
-  padding: 15px 0;
-  margin: 15px;
-  color: #FFF;
+/* The alert message box */
+
+.flash-msg {
+    padding: 10px;
+    color: white;
+    margin-bottom: 10px;
+    background-color: $flashMsg-bg;
+    /* Red */
+    width: 350px;
+    float: right;
+    .icon {
+        margin: 0 auto;
+        text-align: center;
+        padding: 10px;
+        height: 100%;
+        /* float:right; */
+        bottom: 43px;
+    }
+    .msg {
+        margin-right: 10px;
+    }
+    /* The close button */
+    .btn.close {
+        margin-left: 15px;
+        font-weight: bold;
+        float: right;
+        font-size: 2em;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover {
+            color: black;
+        }
+    }
+    &.error {
+        background-color: orange;
+    }
+    &.info {
+        background: #2ba2db;
+    }
+    &.success {
+        background-color: #63a153;
+    }
+    &.warning,
+    &.alert {
+        background-color: #f44336;
+        /* Red */
+    }
 }
 
-.success {
-  @extend .flash_msg;
-  background-color: $flashMsg-bg;
-  border: 1px solid $flashMsg-border;
-}
-
-.alert {
-  @extend .flash_msg;
-  background-color: #ec3845;
-}
+// .flash_msg {
+//     position: absolute;
+//     text-align: center;
+//     width: calc(100% - 66px - 200px - 15px);
+//     padding: 15px 0;
+//     margin: 15px;
+//     color: #FFF;
+// }
+// .success {
+//     @extend .flash_msg;
+//     background-color: $flashMsg-bg;
+//     border: 1px solid $flashMsg-border;
+// }
+// .alert {
+//     @extend .flash_msg;
+//     background-color: #ec3845;
+// }
